@@ -7,14 +7,24 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
 
-      - name: Install and Build 🔧
+      - name: 设置 Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: 安装 PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: 安装依赖并构建 🔧
         run: |
           pnpm install
           pnpm run build
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name: 部署到 GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          ACCESS_TOKEN: Qbcjfj04828945WQJfxvfhfghf
-          BRANCH: gh-pages
-          FOLDER: build
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: build
