@@ -27,11 +27,11 @@ jobs:
         run: |
           git init
           pnpm install --no-frozen-lockfile
-          pnpm run build
+          pnpm run docs:build
 
       - name: 部署到 GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
-          folder: myapp/build
+          folder: myapp/dist
