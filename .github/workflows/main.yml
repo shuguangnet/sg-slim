@@ -31,7 +31,7 @@ jobs:
         run: |
           git init
           pnpm install --no-frozen-lockfile
-          pnpm run docs:build
+          pnpm run build
 
       - name: 部署到 GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
