@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from './index';
+import  Button  from './index';
 import { SearchOutlined } from '@ant-design/icons';
 
 // 基础按钮

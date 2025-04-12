@@ -4,12 +4,13 @@ import type { ButtonProps as AntButtonProps } from 'antd';
 import styled from 'styled-components';
 
 export type ButtonType = 'primary' | 'secondary' | 'text' | 'link';
-export type ButtonSize = 'large' | 'medium' | 'small';
+export type ButtonSize = 'large' | 'middle' | 'small';
 
 export interface ButtonProps extends Omit<AntButtonProps, 'type' | 'size'> {
   type?: ButtonType;
   size?: ButtonSize;
 }
+
 
 const StyledButton = styled(AntButton)<ButtonProps>`
   &.ant-btn {
@@ -77,16 +78,17 @@ const StyledButton = styled(AntButton)<ButtonProps>`
   }
 `;
 
-export const Button: React.FC<ButtonProps> = ({
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
   type = 'primary',
   size = 'middle',
   children,
   ...rest
-}) => {
+}, ref) => {
   const buttonType = type === 'secondary' ? 'default' : type;
   
   return (
     <StyledButton
+      ref={ref}
       type={buttonType}
       size={size}
       {...rest}
@@ -94,6 +96,8 @@ export const Button: React.FC<ButtonProps> = ({
       {children}
     </StyledButton>
   );
-};
+}) 
 
 Button.displayName = 'Button';
+
+export default Button;
