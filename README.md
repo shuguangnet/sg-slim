@@ -1,4 +1,3 @@
-````markdown:/Users/shuguang/Desktop/sg-slim/README.md
 # SG-SLIM
 
 <div align="center">
@@ -30,7 +29,7 @@ yarn add sg-slim
 
 # 使用 pnpm
 pnpm add sg-slim
-````
+```
 
 ## 📦 示例
 
