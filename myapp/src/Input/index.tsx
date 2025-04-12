@@ -1,22 +1,25 @@
 import React from 'react';
 import { Input as AntInput, InputProps as AntInputProps } from 'antd';
 
-// 扩展 Ant Design Input 的属性接口
 export interface InputProps extends AntInputProps {
-  // 自定义属性可以在这里添加
   customBorder?: boolean;
   rounded?: boolean;
 }
 
-// Input 组件
-const Input: React.FC<InputProps> = ({
+interface CompoundedComponent
+  extends React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>> {
+  TextArea: typeof AntInput.TextArea;
+  Search: typeof AntInput.Search;
+  Password: typeof AntInput.Password;
+}
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(({
   customBorder,
   rounded,
   className,
   style,
   ...restProps
-}) => {
-  // 处理自定义样式
+}, ref) => {
   const customStyle = {
     ...style,
     ...(customBorder && {
@@ -30,16 +33,18 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <AntInput
+      ref={ref}
       className={className}
       style={customStyle}
       {...restProps}
     />
   );
-};
+}) as CompoundedComponent;
 
-// 添加Input组件的子组件
 Input.TextArea = AntInput.TextArea;
 Input.Search = AntInput.Search;
 Input.Password = AntInput.Password;
+
+Input.displayName = 'Input';
 
 export default Input;
