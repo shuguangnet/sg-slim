@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
 
       - name: 设置 Node.js
         uses: actions/setup-node@v3
@@ -19,8 +21,12 @@ jobs:
 
       - name: 安装依赖并构建 🔧
         working-directory: ./myapp
+        env:
+          HUSKY: 0
+          CI: true
         run: |
-          pnpm install
+          git init
+          pnpm install --no-frozen-lockfile
           pnpm run build
 
       - name: 部署到 GitHub Pages 🚀
