@@ -4,7 +4,7 @@ import type { ButtonProps as AntButtonProps } from 'antd';
 import styled from 'styled-components';
 
 export type ButtonType = 'primary' | 'secondary' | 'text' | 'link';
-export type ButtonSize = 'large' | 'middle' | 'small';
+export type ButtonSize = 'large' | 'medium' | 'small';
 
 export interface ButtonProps extends Omit<AntButtonProps, 'type' | 'size'> {
   type?: ButtonType;
