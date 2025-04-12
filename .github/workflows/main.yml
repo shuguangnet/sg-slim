@@ -20,6 +20,7 @@ jobs:
           version: 8
 
       - name: 安装依赖并构建 🔧
+        working-directory: ./myapp
         env:
           HUSKY: 0
           CI: true
@@ -33,4 +34,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
-          folder: dist
+          folder: docs-dist
