@@ -4,6 +4,7 @@
   "description": "A react library developed with dumi",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "homepage": "https://shuguangnet.github.io/github-deploy-demo",
   "scripts": {
     "start": "npm run dev",
     "dev": "dumi dev",
